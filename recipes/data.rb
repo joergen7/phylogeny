@@ -10,25 +10,39 @@ seed_dir = "#{node.dir.data}/seed"
 
 chase_seed = "#{seed_dir}/PF03924_seed.txt"
 
-link_lst = [
-            "ftp://ftp.jgi-psf.org/pub/JGI_data/Chlamy/v4.0/annotation/Chlre4_all_proteins.fasta.gz",
-            "ftp://ftp.jgi-psf.org/pub/JGI_data/Physcomitrella_patens/v1.1/proteins.Phypa1_1.AllModels.fasta.gz",
-            "ftp://ftp.jgi-psf.org/pub/JGI_data/Aureococcus_anophageferrens/annotation/v1.0/proteins.Auran1_FilteredModels3.fasta.gz",
-            "ftp://ftp.jgi-psf.org/pub/JGI_data/Chlorella_NC64A/annotation/v1.0/Chlorella_NC64A.all_proteins.fasta.gz",
-            "ftp://ftp.jgi-psf.org/pub/JGI_data/Chlorella_vulgaris/annotation/v1.0/Chlvu1_all_proteins_3.fasta.gz",
-            "ftp://ftp.jgi-psf.org/pub/JGI_data/Ehuxleyi/annotation/v1.0/Emihu1_all_proteins.fasta.gz",
-            "ftp://ftp.jgi-psf.org/pub/JGI_data/Fragilariopsis_cylindrus/v1.0/Fracy1_GeneModels_FilteredModels2_aa.fasta.gz"
-           ]
+jgi_base_url = "ftp://ftp.jgi-psf.org/pub/JGI_data"
+jgi_link_lst = [
+  "Poplar/annotation/v1.1/Poptr1_1_GeneModels_AllModels_20081112_aa.fasta.gz",
+  "Physcomitrella_patens/v1.1/proteins.Phypa1_1.AllModels.fasta.gz",
+  "Volvox_carteri/annotation/v1.0/Volca1.GeneCatalog_2007_09_13.proteins.fasta.gz",
+  "Selaginella_moellendorffii/v1.0/Selmo1_GeneModels_FilteredModels2_aa.fasta.gz",
+  "Chlamy/v4.0/annotation/Chlre4_all_proteins.fasta.gz"
+]
+
+gramene_base_url = "ftp://ftp.gramene.org/pub/gramene/CURRENT_RELEASE/data/fasta"
+gramene_link_lst = [
+  "oryza_sativa/pep/Oryza_sativa.IRGSP-1.0.31.pep.all.fa.gz",
+  "arabidopsis_thaliana/pep/Arabidopsis_thaliana.TAIR10.31.pep.all.fa.gz"
+]
 
 directory node.dir.data
 directory fa_dir
 directory seed_dir
 
-link_lst.each { |link|
+jgi_link_lst.each { |link|
 
   remote_file "#{fa_dir}/#{File.basename( link )}" do
     action :create_if_missing
-    source link
+    source "#{jgi_base_url}/#{link}"
+    retries 1
+  end
+}
+
+gramene_link_lst.each { |link|
+
+  remote_file "#{fa_dir}/#{File.basename( link )}" do
+    action :create_if_missing
+    source "#{gramene_base_url}/#{link}"
     retries 1
   end
 }
