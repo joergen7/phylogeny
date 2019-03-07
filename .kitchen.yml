@@ -14,7 +14,7 @@ provisioner:
 #   format: doc
 
 platforms:
-  - name: ubuntu-16.04
+  - name: ubuntu-18.04
 
 suites:
   - name: default

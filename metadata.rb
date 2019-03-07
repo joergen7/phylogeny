@@ -1,10 +1,10 @@
 name 'phylogeny'
 maintainer 'Jörgen Brandt'
-maintainer_email 'joergen.brandt@onlinehome.de'
+maintainer_email 'joergen@cuneiform-lang.org'
 license 'Apache 2.0'
 description 'Installs/Configures phylogeny'
 long_description 'Installs/Configures phylogeny'
-version '0.1.0'
+version '0.1.1'
 chef_version '>= 12.14' if respond_to?(:chef_version)
 
 # The `issues_url` points to the location where issues for this cookbook are
@@ -18,3 +18,5 @@ issues_url 'https://github.com/joergen7/phylogeny/issues'
 # a Supermarket.
 #
 source_url 'https://github.com/joergen7/phylogeny'
+
+depends 'chef-cuneiform', '0.1.4'

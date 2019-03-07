@@ -2,7 +2,7 @@
 # Cookbook:: phylogeny
 # Recipe:: data
 #
-# Copyright:: 2016-2018 Jörgen Brandt
+# Copyright:: 2016-2019 Jörgen Brandt <joergen@cuneiform-lang.org>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+#
 
 fa_dir = "#{node["dir"]["data"]}/fa"
 seed_dir = "#{node["dir"]["data"]}/seed"
@@ -31,10 +31,10 @@ jgi_link_lst = [
   "Chlamy/v4.0/annotation/Chlre4_all_proteins.fasta.gz"
 ]
 
-gramene_base_url = "ftp://ftp.gramene.org/pub/gramene/CURRENT_RELEASE/data/fasta"
+gramene_base_url = "ftp://ftp.gramene.org/pub/gramene/release-60/fasta"
 gramene_link_lst = [
-  "oryza_sativa/pep/Oryza_sativa.IRGSP-1.0.31.pep.all.fa.gz",
-  "arabidopsis_thaliana/pep/Arabidopsis_thaliana.TAIR10.31.pep.all.fa.gz"
+  "oryza_sativa/pep/Oryza_sativa.IRGSP-1.0.pep.all.fa.gz",
+  "arabidopsis_thaliana/pep/Arabidopsis_thaliana.TAIR10.pep.all.fa.gz"
 ]
 
 directory node["dir"]["data"]

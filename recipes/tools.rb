@@ -2,7 +2,7 @@
 # Cookbook:: phylogeny
 # Recipe:: tools
 #
-# Copyright:: 2016-2018 Jörgen Brandt
+# Copyright:: 2016-2019 Jörgen Brandt <joergen@cuneiform-lang.org>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,10 +15,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
-include_recipe "chef-bioinf-worker::hmmer"
-include_recipe "chef-bioinf-worker::muscle"
-include_recipe "chef-bioinf-worker::clustalw"
-include_recipe "chef-bioinf-worker::phylip"
+# refresh package sources
+bash "apt-get_update" do
+    code "apt-get update"
+end
 
+include_recipe "phylogeny::hmmer"
+
+package "phylip"
+package "clustalw"
+package "muscle"
 package "ghostscript"
